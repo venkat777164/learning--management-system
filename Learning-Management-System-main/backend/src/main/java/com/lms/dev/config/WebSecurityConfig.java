@@ -85,7 +85,13 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://127.0.0.1:3000"));
+        // Allow localhost for development and Netlify domains for production
+        configuration.setAllowedOrigins(List.of(
+            "http://localhost:3000", 
+            "http://127.0.0.1:3000",
+            "https://learnhub222.netlify.app",
+            "https://*.netlify.app"
+        ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
