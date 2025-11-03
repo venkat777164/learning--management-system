@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: lms-backend
+    env: java
+    rootDir: backend
+
+    plan: free
+    autoDeploy: true
+
+    buildCommand: ./mvnw -DskipTests package
+    startCommand: java -jar target/Learning-Management-System-0.0.1-SNAPSHOT.jar
+
+    healthCheckPath: /actuator/health
+
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
+      - key: SPRING_PROFILES_ACTIVE
+        value: default
+      # Add your DB config here or in Render dashboard:
+      # - key: SPRING_DATASOURCE_URL
+      #   value: jdbc:mysql://<host>:<port>/<db>?useSSL=false&serverTimezone=UTC
+      # - key: SPRING_DATASOURCE_USERNAME
+      #   value: <username>
+      # - key: SPRING_DATASOURCE_PASSWORD
+      #   value: <password>
+
+    headers:
+      - path: /*
+        name: Access-Control-Allow-Origin
+        value: "*"
