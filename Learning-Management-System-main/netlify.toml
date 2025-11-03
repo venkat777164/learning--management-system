@@ -1,7 +1,8 @@
 # Netlify config (root) — build from frontend directory
 [build]
-  command = "cd frontend && npm ci && npm run build"
-  publish = "frontend/build"
+  base = "frontend"
+  command = "npm ci && npm run build"
+  publish = "build"
 
 [[redirects]]
   from = "/*"
