@@ -2,7 +2,7 @@ services:
   - type: web
     name: lms-backend
     runtime: docker
-    rootDir: backend
+    rootDir: learning-management-main/backend
     plan: free
     autoDeploy: true
     healthCheckPath: /actuator/health
